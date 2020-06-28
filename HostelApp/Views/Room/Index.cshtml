@@ -1,0 +1,42 @@
+﻿@model RoomVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="mg-best-rooms">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mg-sec-title undefined">
+                    <h2>Our Rooms</h2>
+                    <p>These best rooms chosen by our customers</p>
+                </div>
+                <div class="row">
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <div class="col-md-4">
+                            <figure class="mg-room ">
+                                @for (int i = 0; i < room.RoomImages.Count(); i++)
+                                {
+                                    <img style="height: 208px;@(i==0? "display:block;" : "display:none;")" class="img-fluid" src="~/images/room/@room.RoomImages.ElementAt(i).Image" alt="img11" />
+                                }
+                                <figcaption>
+                                    <h2>@room.Category.CategoryName</h2>
+                                    <div class="mg-room-rating">
+                                        <i class="fa fa-star"> </i> 5.0
+                                    </div>
+                                    <div class="mg-room-price">@room.Price<sup>/Month</sup></div>
+                                    <p>@room.Description</p><a class="btn btn-link" asp-action="Details" asp-controller="Room" asp-route-id="@room.ID">View Details<i class="fa fa-angle-double-right"></i></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                    }
+                </div>
+                <div class="text-center">
+                    <a asp-action="Index" asp-controller="Room" class="btn btn-primary">All rooms</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

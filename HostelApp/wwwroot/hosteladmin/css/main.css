@@ -1,0 +1,47 @@
+﻿#slider, #slider .images, #slider .images .item, #slider .images .item img {
+    width: 100%;
+    height: 400px;
+}
+
+    #slider, #slider .images {
+        position: relative;
+    }
+
+        #slider .images .item, .icon {
+            position: absolute;
+        }
+
+        #slider .images .item {
+            opacity: 0;
+        }
+
+.icon {
+    font-size: 1.7rem;
+    padding: 1%;
+    top: 44%;
+    cursor: pointer;
+}
+
+.left {
+    left: 2%;
+}
+
+.right {
+    right: 2%;
+}
+
+.icon .fas {
+    color: #ffffff;
+}
+
+.active {
+    opacity: 1 !important;
+}
+.image-container{
+    position:relative;
+}
+.image-buttons {
+    position: absolute !important;
+    bottom: 1%;
+    right: 1%;
+}

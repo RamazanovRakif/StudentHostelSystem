@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Galery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="mg-page "style="margin-top:60px;" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mg-filter">
+                    <form id="mg-filter">
+                        <fieldset>
+                            <label class="btn btn-dark btn-main">
+                                <input type="radio" name="filter" value="all" checked="checked">All
+                            </label>
+                            <label class="btn btn-dark">
+                                <input type="radio" name="filter" value="classic">Classic
+                            </label>
+                            <label class="btn btn-dark">
+                                <input type="radio" name="filter" value="deluxe">Deluxe
+                            </label>
+                            <label class="btn btn-dark">
+                                <input type="radio" name="filter" value="royal">Royal
+                            </label>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="row" id="mg-grid">
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;classic&quot;]"><a href="~/images/room/room-1.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-1.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;deluxe&quot;]"><a href="~/images/room/room-2.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-2.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;royal&quot;]"><a href="~/images/room/room-3.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-3.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;classic&quot;]"><a href="~/images/room/room-4.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-4.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;deluxe&quot;]"><a href="~/images/room/room-5.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-5.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;classic&quot;]"><a href="~/images/room/room-6.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-6.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;royal&quot;]"><a href="~/images/room/room-7.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-7.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;royal&quot;]"><a href="~/images/room/room-8.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-8.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;classic&quot;]"><a href="~/images/room/room-9.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-9.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;royal&quot;]"><a href="~/images/room/room-10.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-10.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;deluxe&quot;]"><a href="~/images/room/room-11.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-11.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                    <figure class="col-lg-4 mg-gallery-item" data-groups="[&quot;classic&quot;]"><a href="~/images/room/room-12.png" data-lightbox-gallery="rooms"><img class="img-fluid" src="~/images/room/room-12.png" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a></figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

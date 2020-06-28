@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Error";
+}
+
+    <div class="mg-page-title parallax">
+        <div class="mg-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mg-404-error-txt">
+                            <div class="mg-404-badg float-left"><strong>404</strong><span>Error</span></div>
+                            <h1>@ViewBag.Result</h1>
+                            <div class="mg-404-txt-search">
+                                <strong>Sorry, Your requested page is not found.</strong>
+                                 
+                                <p>May be you will like to search Rooms for Booking.</p>
+                                <div class="mg-404-search-form">
+                                    <form>
+                                        <input class="form-control" type="text" name="s" placeholder="Type Keyword...">
+                                        <button class="btn btn-main" type="submit">
+                                            <i class="fa fa-search"></i> Search
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

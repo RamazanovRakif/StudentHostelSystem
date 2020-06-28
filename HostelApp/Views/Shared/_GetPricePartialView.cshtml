@@ -1,0 +1,23 @@
+﻿@model Room
+<div class="col-md-6">
+    <label class="control-label">Price:</label>
+</div>
+<div class="col-md-6" style="text-align:center;">
+    <label class="control-label price" style="color:red;">@decimal.Round(Model.Price, 2)</label>
+</div>
+<div class="col-md-6">
+    <label class="control-label">Resreved:</label>
+</div>
+<div class="col-md-6" style="text-align:center;">
+    @{
+        bool isReserved = Model.IsReserved;
+    }
+    @if (isReserved == true)
+    {
+        <label class="control-label" style="color:red;">Yes</label>
+    }
+    @if (isReserved == false)
+    {
+        <label class="control-label" style="color:red;">No</label>
+    }
+</div>

@@ -1,0 +1,89 @@
+﻿@model HostelApp.Areas.HostelAdmin.ViewModels.RoomVM
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/HostelAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/hosteladmin/css/main.css" rel="stylesheet" />
+
+<div class=" image-container">
+    <div id="slider">
+        <div class="images">
+            @for (int i = 0; i < Model.Room.RoomImages.Count(); i++)
+            {
+                <div class="item @(i == 0 ? "active" : "")">
+                    <img src="~/images/room/@Model.Room.RoomImages.ElementAt(i).Image" alt="slider image ">
+                </div>
+            }
+
+        </div>
+        <div class="icon left" id="left">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+
+        <div class="icon right" id="right">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+    @if (Model.Room.RoomImages.Count() == 0)
+    {
+        <label class="text-danger">Image Empty</label>
+    }
+    <div class="image-buttons">
+        <a asp-area="HostelAdmin" asp-controller="RoomImages" asp-action="Index" asp-route-id="@Model.Room.ID" class="btn btn-warning"><i class="fas fa-pen"></i></a>
+    </div>
+</div>
+
+<form method="post" asp-action="Edit" asp-area="HostelAdmin" asp-controller="Room">
+    <div class="" style="padding-top:50px;">
+        <div class="col-md-4">
+            <div class="form-group col-md-11">
+                <label class="control-label">Room Number</label>
+                <input class="form-control" asp-for="@Model.Room.RoomNumber" />
+                <span asp-validation-for="@Model.Room.RoomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-11">
+                <label class="control-label">Bed Count</label>
+                <input class="form-control" asp-for="@Model.Room.BedCount" />
+                <span asp-validation-for="@Model.Room.BedCount" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group col-md-11">
+                <label class="control-label">Category</label>
+                <select class="form-control" asp-for="SelectedCategory" asp-items="@(new SelectList(Model.Categories,"Id", "CategoryName"))">
+                    <option value="@Model.Room.Category.Id">@Model.Room.Category.CategoryName</option>
+                </select>
+                <span asp-validation-for="@Model.SelectedCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-11">
+                <label class="control-label">WI-FI</label>
+                <input class="checkbox" asp-for="@Model.Room.WiFi" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group col-md-11">
+                <label class="control-label">Price</label>
+                <input class="form-control" asp-for="@Model.Room.Price" />
+                <span asp-validation-for="@Model.Room.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-11">
+                <label class="control-label">Breakfast</label>
+                <input class="checkbox" asp-for="@Model.Room.Breakfast" />
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group col-md-8">
+                <label class="control-label">Descripion</label>
+                <input class="form-control" asp-for="@Model.Room.Description" />
+            </div>
+            <div class="col-md-4">
+                <div class="form-group col-md-11">
+                    <label class="control-label">Reserved</label>
+                    <input class="checkbox" asp-for="@Model.Room.IsReserved" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success col-md-8">Save</button>
+        </div>
+    </div>
+</form>
+<script src="~/hosteladmin/js/main.js"></script>

@@ -1,0 +1,201 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="carousel slide" id="mega-slider" data-ride="carousel">
+    <!-- Indicators-->
+    <ol class="carousel-indicators">
+        <li class="active" data-target="#mega-slider" data-slide-to="0"></li>
+        <li data-target="#mega-slider" data-slide-to="1"></li>
+        <li data-target="#mega-slider" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper for slides-->
+    <div class="carousel-inner">
+        @for (int i = 0; i < Model.Sliders.Count(); i++)
+        {
+            <div class="carousel-item  @(i==0? "active beactive": "")" style="height:650px;">
+                <img style="height:100%; width:100%;" src="~/images/slider/@Model.Sliders.ElementAt(i).Image" alt="...">
+                <div class="carousel-caption">
+                    <img src="~/images/slider/stars.png" alt="">
+                    <h2>@Model.Sliders.ElementAt(i).Title</h2>
+                    <p>@Model.Sliders.ElementAt(i).Content</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="carousel-control-prev carousel-control left" href="#mega-slider" role="button" data-slide="prev"></div>
+    <div class="carousel-control-next carousel-control right" href="#mega-slider" role="button" data-slide="next"></div>
+</div>
+<section class="mg-book-now">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h2 class="mg-bn-title">Search Rooms<span class="mg-bn-big">For rates & availability</span></h2>
+            </div>
+            <div class="col-lg-9">
+                <div class="mg-bn-forms">
+                    <form method="get" asp-action="Index" asp-controller="Room">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="input-group date mg-check-in">
+                                    <div class="input-group-addon"><i class="far fa-calendar-alt"></i></div>
+                                    <input name="startDate" class="form-control checkIn" type="text" id="exampleInputEmail1" placeholder="Check In" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="input-group date mg-check-out">
+                                    <div class="input-group-addon"><i class="far fa-calendar-alt"></i></div>
+                                    <input name="endDate" class="form-control checkOut" type="text" id="exampleInputEmail1" placeholder="Check Out" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <select name="count" class="cs-select cs-skin-elastic" id="count">
+                                            <option value="" disabled selected>Count</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-3">
+                                <input class="btn btn-main btn-block" type="submit" value="Check Now" id="check">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mg-best-rooms">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mg-sec-title undefined">
+                    <h2>Our Best Rooms</h2>
+                    <p>These best rooms chosen by our customers</p>
+                </div>
+                <div class="row">
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <div class="col-md-4">
+                            <figure class="mg-room">
+                                @for (int i = 0; i < room.RoomImages.Count(); i++)
+                                {
+                                    <img style="height: 208px;@(i==0? "display:block;" : "display:none;")" class="img-fluid" src="~/images/room/@room.RoomImages.ElementAt(i).Image" alt="img11" />
+                                }
+                                <figcaption>
+                                    <h2>@room.Category.CategoryName</h2>
+                                    <div class="mg-room-rating">
+                                        <i class="fa fa-star"> </i> 5.0
+                                    </div>
+                                    <div class="mg-room-price">@room.Price<sup>/Month</sup></div>
+                                    <p>@room.Description</p><a class="btn btn-link" asp-action="Details" asp-controller="Room" asp-route-id="@room.ID">View Details<i class="fa fa-angle-double-right"></i></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    }
+                </div>
+                <div class="text-center">
+                    <a asp-action="AllRooms" asp-controller="Room" class="btn btn-primary">All rooms</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mg-about parallax">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h2 class="mg-sec-left-title">@Model.Hostel.Title</h2>
+                <p>@Model.Hostel.Context</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mg-features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mg-sec-title undefined">
+                    <h2>Hostel facilties</h2>
+                    <p>These best rooms chosen by our customers</p>
+                </div>
+                <div class="row">
+                    @foreach (var facilty in Model.Facilties)
+                    {
+                        <div class="col-md-4">
+                            <div class="mg-feature">
+                                <div class="mg-feature-icon-title">
+                                    <h3 style="margin-left:0 !important;">@facilty.Title</h3>
+                                </div>
+                                <p>@facilty.Context</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mg-testi-partners parallax">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="mg-sec-left-title">Our Partners</h2>
+                <div class="mg-part-logos" id="mg-part-logos">
+                    @foreach (var partner in Model.Partners)
+                    {
+                        <li><img src="~/images/partner/@partner.Logo" alt="Partner Logo" /></li>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mg-news-gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <h2 class="mg-sec-left-title">Recent News</h2>
+                <ul class="mg-recnt-posts">
+                    <li>
+                        @foreach (var news in Model.News)
+                        {
+                            <div class="mg-recnt-post">
+                                <div class="mg-rp-date">
+                                    @news.PublishDate.Day
+                                    <div class="mg-rp-month">@news.PublishDate.ToString("MMM")</div>
+                                </div>
+                                <h3><a href="#">@news.Title</a></h3>
+                                <p>@news.Context</p>
+                            </div>
+                        }
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-7">
+                <h2 class="mg-sec-left-title">Our Gallery</h2>
+                <div class="mg-gallery-container">
+                    <ul class="mg-gallery" id="mg-gallery">
+                        @foreach (var image in Model.RoomImages)
+                        {
+                            <li><img src="~/images/room/@image.Image" alt="Partner Logo"></li>
+                        }
+                    </ul>
+                    <ul class="mg-gallery-thumb" id="mg-gallery-thumb">
+                        @foreach (var image in Model.RoomImages)
+                        {
+                            <li><img src="~/images/room/@image.Image" alt="Partner Logo"></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

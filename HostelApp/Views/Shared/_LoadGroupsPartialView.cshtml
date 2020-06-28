@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Group>
+
+@foreach (var group in Model)
+{
+    <option value="@group.ID">@group.GroupName</option>
+}

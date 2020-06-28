@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Room>
+@{
+    ViewBag.Title = "Room";
+    Layout = "~/Areas/HostelAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row my-3">
+    <div class="col-12">
+        <a asp-area="HostelAdmin" asp-controller="AboutHostel" asp-action="Create" class="btn btn-primary btn-block">
+            <i class="fas fa-plus"></i> Create New
+        </a>
+    </div>
+</div>
+<table class="table table-bordered table-hover table-responsive pt-3">
+    <thead>
+        <tr>
+            <th style="vertical-align:middle; text-align:center;">Content</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td style="vertical-align:middle; text-align:center;">@room.RoomNumber</td>
+                <td style="vertical-align:middle; text-align:center;">
+                    <a asp-area="HostelAdmin" asp-controller="Room" asp-action="Edit" asp-route-id="@room.ID" class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

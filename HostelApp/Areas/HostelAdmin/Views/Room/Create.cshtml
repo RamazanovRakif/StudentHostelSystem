@@ -1,0 +1,59 @@
+﻿@model HostelApp.Areas.HostelAdmin.ViewModels.RoomVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/HostelAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <form method="post" asp-action="Create" asp-area="HostelAdmin" asp-controller="Room">
+        <div class="" style="padding-top:50px;">
+            <div class="col-md-4">
+                <div class="form-group col-md-11">
+                    <label class="control-label">Room Number</label>
+                    <input class="form-control" asp-for="@Model.Room.RoomNumber" />
+                    <span asp-validation-for="@Model.Room.RoomNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-11">
+                    <label class="control-label">Bed Count</label>
+                    <input class="form-control" asp-for="@Model.Room.BedCount" />
+                    <span asp-validation-for="@Model.Room.BedCount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group col-md-11">
+                    <label class="control-label">Category</label>
+                    <select class="form-control" asp-for="SelectedCategory" asp-items="@(new SelectList(Model.Categories,"Id", "CategoryName"))">
+                        <option value="">Select category</option>
+                    </select>
+                    <span asp-validation-for="@Model.SelectedCategory" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-11">
+                    <label class="control-label">WI-FI</label>
+                    <input class="checkbox" asp-for="@Model.Room.WiFi" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group col-md-11">
+                    <label class="control-label">Price</label>
+                    <input class="form-control" asp-for="@Model.Room.Price" />
+                    <span asp-validation-for="@Model.Room.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-11">
+                    <label class="control-label">Breakfast</label>
+                    <input class="checkbox" asp-for="@Model.Room.Breakfast" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group col-md-8">
+                    <label class="control-label">Descripion</label>
+                    <input class="form-control" asp-for="@Model.Room.Description" />
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group col-md-11">
+                        <label class="control-label">Reserved</label>
+                        <input class="checkbox" asp-for="@Model.Room.IsReserved" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success col-md-8">Create</button>
+            </div>
+        </div>
+    </form>

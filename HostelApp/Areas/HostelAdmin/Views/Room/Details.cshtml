@@ -1,0 +1,97 @@
+﻿@model Room
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/HostelAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/hosteladmin/css/main.css" rel="stylesheet" />
+
+
+
+<div class="col-md-4">
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="control-label">Room Number:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.RoomNumber</label>
+        </div>
+    </div>
+    <div class="form-group" style="padding-top:30px;">
+        <div class="col-md-6">
+            <label class="control-label">Category:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.Category.CategoryName</label>
+        </div>
+    </div>
+    <div class="form-group" style="padding-top:30px;">
+        <div class="col-md-6">
+            <label class="control-label">Bed Count:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.BedCount</label>
+        </div>
+    </div>
+    <div class="form-group" style="padding-top:30px;">
+        <div class="col-md-6">
+            <label class="control-label">Breakfast:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.Breakfast</label>
+        </div>
+    </div>
+    <div class="form-group" style="padding-top:30px;">
+        <div class="col-md-6">
+            <label class="control-label">WI-FI:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.WiFi</label>
+        </div>
+    </div>
+    <div class="form-group" style="padding-top:30px;">
+        <div class="col-md-6">
+            <label class="control-label">Resreved:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.IsReserved</label>
+        </div>
+    </div>
+    <div class="form-group" style="padding-top:30px;">
+        <div class="col-md-6">
+            <label class="control-label">Price:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.Price</label>
+        </div>
+    </div>
+    <div class="form-group" style="padding-top:30px;">
+        <div class="col-md-6">
+            <label class="control-label">Description:</label>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <label class="control-label" style="color:#7E7E7E;">@Model.Description  </label>
+        </div>
+    </div>
+</div>
+<div class="col-md-8">
+    <div id="slider">
+        <div class="images">
+            @for (int i = 0; i < Model.RoomImages.Count(); i++)
+            {
+                <div class="item @(i == 0 ? "active" : "")">
+                    <img src="~/images/room/@Model.RoomImages.ElementAt(i).Image" alt="slider image ">
+                </div>
+            }
+        </div>
+        <div class="icon left" id="left">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+
+        <div class="icon right" id="right">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/hosteladmin/js/main.js"></script>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Slider>
+@{
+    ViewBag.Title = "Sliders";
+    Layout = "~/Areas/HostelAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row my-3">
+    <div class="col-12">
+        <a asp-area="HostelAdmin" asp-controller="Sliders" asp-action="Create" class="btn btn-primary btn-block">
+            <i class="fas fa-plus"></i> Create New Slider
+        </a>
+    </div>
+</div>
+<table class="table table-bordered table-hover table-responsive pt-3">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var slider in Model)
+        {
+            <tr>
+                <td><img style="width:150px;" src="~/images/slider/@slider.Image" class="img-thumbnail" /></td>
+                <td style="vertical-align:middle; text-align:center;">@slider.Title</td>
+                <td style="vertical-align:middle; text-align:center;">@slider.Content</td>
+                <td style="vertical-align:middle; text-align:center;">
+                    @if (Model.Count() > 1)
+                    {
+                        <a asp-area="HostelAdmin" asp-controller="Sliders" asp-action="Edit" asp-route-id="@slider.ID" class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                        <a asp-area="HostelAdmin" asp-controller="Sliders" asp-action="Delete" asp-route-id="@slider.ID" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

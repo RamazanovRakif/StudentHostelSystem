@@ -1,0 +1,98 @@
+﻿@model RegisterVM
+
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/libs/bootstrap/css/bootstrap.min.css">
+<div class="main-container">
+    <div class="container-fluid register">
+        <form method="post" asp-action="Register" asp-controller="Account" enctype="multipart/form-data">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group col-lg-8">
+                        <label class="control-label" asp-for="Name"></label>
+                        <input class="form-control" style="padding:2px 10px !important; font-size:14px;" asp-for="Name" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label" asp-for="Surname"></label>
+                        <input class="form-control" style="height:30px !important;" asp-for="Surname" />
+                        <span class="text-danger" asp-validation-for="Surname"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label">Father name</label>
+                        <input class="form-control" style="height:30px !important;" asp-for="FatherName" />
+                        <span class="text-danger" asp-validation-for="FatherName"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label" asp-for="IDCardNumber"></label>
+                        <input type="number" class="form-control" style="height:30px !important;" asp-for="IDCardNumber" />
+                        <span class="text-danger" asp-validation-for="IDCardNumber"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label">Student Ticket Number</label>
+                        <input type="number" class="form-control" style="height:30px !important;" asp-for="StudentTicketNumber" />
+                        <span class="text-danger" asp-validation-for="StudentTicketNumber"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label" asp-for="Email"></label>
+                        <input type="email" class="form-control" style="height:30px !important;" asp-for="Email" />
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group col-lg-8">
+                        <label class="control-label">University</label>
+                        <select class="form-control" id="university" style="padding:2px 10px !important; font-size:16px;" asp-for="SelectedUniversity" asp-items="@(new SelectList(Model.Universities,"ID","Name"))">
+                            <option value="">--Select University--</option>
+                        </select>
+                        <span asp-validation-for="SelectedUniversity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label">Faculty</label>
+                        <select class="form-control faculty" style="padding:2px 10px !important; font-size:16px;" asp-for="SelectedFaculty">
+                            <option value="">--Select Faculty--</option>
+                        </select>
+                        <span asp-validation-for="SelectedFaculty" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label">Group</label>
+                        <select class="form-control" style="padding:2px 10px !important; font-size:16px;" asp-for="SelectedGroup">
+                            <option value="">--Select Group--</option>
+                        </select>
+                        <span asp-validation-for="SelectedGroup" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label" asp-for="Password"></label>
+                        <input type="password" class="form-control" style="height:30px !important;" asp-for="Password" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label">Confirm Password</label>
+                        <input type="password" class="form-control" style="height:30px !important;" asp-for="ConfirmPassword" />
+                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-lg-8">
+                        <div id="imgPreview">
+                            <img src="" style=" border:1px solid black; height:200px; width:100%; background-image: url(/images/no_photo.jpg); background-size:contain;" id="image">
+                        </div>
+                        <input style="margin-top:5px" ; accept="image/*" asp-for="Photo" type="file" onchange="showImage.call(this)" />
+                        <span class="text-danger red" asp-validation-for="Photo"></span>
+                    </div>
+                    <div class="btn-register col-lg-9">
+                        <input type="submit" class="btn btn-primary" value="Register" />
+                    </div>
+                </div>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Back to Index</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/index.js"></script>

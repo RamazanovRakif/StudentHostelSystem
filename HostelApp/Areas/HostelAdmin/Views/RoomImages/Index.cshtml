@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RoomImage>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/HostelAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    int roomId = 0;
+    for(int i=0; i<Model.Count(); i++)
+    {
+        roomId = Model.ElementAt(0).Room.ID;
+    }
+}
+
+<div class="row my-3">
+    <div class="col-12">
+        <a asp-area="HostelAdmin" asp-controller="RoomImages" asp-action="Create" asp-route-id="@ViewBag.RoomId" class="btn btn-primary btn-block">
+            <i class="fas fa-plus"></i> Add New Image
+        </a>
+    </div>
+</div>
+<table class="table table-bordered table-hover table-responsive pt-3">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var roomImage in Model)
+        {
+            <tr>
+                <td><img style="width:150px;" src="~/images/room/@roomImage.Image" class="img-thumbnail" /></td>
+                <td style="vertical-align:middle; text-align:center;">
+                    @if (Model.Count() > 1)
+                    {
+                        <a asp-area="HostelAdmin" asp-controller="RoomImages" asp-action="Edit" asp-route-id="@roomImage.ID" class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                        <form style="display:inline;" asp-area="HostelAdmin" asp-controller="RoomImages" asp-action="Delete" asp-route-id="@roomImage.ID" method="post">
+                            <input type="hidden" name="id" value="@roomImage.ID"/>
+                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                       
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

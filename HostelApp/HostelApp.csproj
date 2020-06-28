@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Models\AppUser.cs" />
+    <Content Include="Models\Faculty.cs" />
+    <Content Include="Models\Group.cs" />
+    <Content Include="Models\Slider.cs" />
+    <Content Include="Models\University.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\HostelAdmin\Data\" />
+    <Folder Include="Areas\HostelAdmin\Models\" />
+    <Folder Include="Views\Ajax\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+  </ItemGroup>
+
+</Project>
